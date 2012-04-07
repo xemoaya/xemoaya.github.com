@@ -389,10 +389,8 @@ a.selectConfirmBTN{
 }
 #stepTwoWrapper{
 	display:block;
-	min-height:670px;
+	height:670px;
 	padding-bottom:20px;
-	border-top:1px solid #fff;
-/*	width:810px;*/
 }
 .stepTwoTitle{
 	color: #2D2D2D;
@@ -1260,6 +1258,28 @@ a:hover.naviBTNCurrent{
 #connectWrapperConnectedTencent{
 	display:none;	
 }
+#connectWrapperConnectedT163{
+	display:none;	
+}
+#connectWrapperConnectedTSOHU{
+	display:none;	
+}
+
+.connectT163{
+	background:url(../images/connect163.png) 0 0 no-repeat;	
+}
+.unconnectT163{
+	background:url(../images/connected163.png) 0 0 no-repeat;	
+}
+.connectTSOHU{
+	background:url(../images/connectsohu.png) 0 0 no-repeat;	
+}
+.unconnectTSOHU{
+	background:url(../images/connectedsohu.png) 0 0 no-repeat;	
+}
+
+
+
 .inputAPPTitle{
 	width:70px;
 	font-size:13px;
@@ -1292,7 +1312,7 @@ a:hover.naviBTNCurrent{
 	float:left;
 	font-size:13px;
 	padding:0 0 0 5px;
-	margin-top:-4px;
+	margin-top:4px;
 }
 .inputAPPWrapper{
 	padding:0 0 2px 0;	
@@ -1305,7 +1325,7 @@ a:hover.naviBTNCurrent{
 	margin-bottom:15px;
 	margin-top:5px;
 }
-#submitAPPTencent,#submitAPP{
+#submitAPPTencent,#submitAPP,#submitAPPT163,#submitAPPTSOHU{
 	border:none;
 	background:url(../images/saveBTN.png) 0 0 no-repeat;
 	width:91px;
@@ -1436,8 +1456,8 @@ a#bindID{
 }
 .sinaArtSnap{
 	background:url(../images/introArticleImage.png) 0 0 no-repeat;
-	width:238px;
-	height:58px;
+	width:282PX;
+	height:118PX;
 	
 }
 #checkAlertEmail{
@@ -1461,8 +1481,8 @@ a#bindID{
 	padding-right:10px;
 }
 #snsEdit{
-	display:none;
-	width: 810px;
+	width: 1150px;
+	margin-top:25px;
 }
 #changeToConnected{
 	margin-right:20px;
@@ -1476,11 +1496,10 @@ a#bindID{
 }
 .snsLeftContainer{
 	float:left;
-	border-right:1px solid #e0e0e0;
-	margin-right:-1px;
+	margin-right:8px;
 	padding-left:20px;
 	padding-top:20px;
-	width:340px;
+	width:90%;
 }
 .introTitleProxy{
 	font-size:13px;
@@ -1711,9 +1730,24 @@ a.smallEMAIL{
 	font-weight:normal;
 }	
 .sinaBindContainer{
-	padding-bottom:15px;
-	margin-bottom:15px;
-	border-bottom:1px solid #CCC;
+	margin-bottom:10px;
+	padding-bottom:10px;
+	margin-left:15px;
+	margin-top:25px;
+}
+.tencentBindContainer
+{
+	margin-bottom:10px;
+	padding-bottom:10px;
+	margin-left:15px;
+	margin-top:25px;
+}
+.t163BindContainer
+{
+	margin-bottom:10px;
+	padding-bottom:10px;
+	margin-left:15px;
+	margin-top:25px;
 }
 .bindTitleIntro{
 	font-size:13px;

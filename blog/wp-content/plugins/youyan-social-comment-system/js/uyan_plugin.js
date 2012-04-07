@@ -1,24 +1,9 @@
-var SINA_ACCESS_TOKEN;
-var SINA_ACCESS_SECRETE;
-var SINA_APP_KEY;
-var SINA_APP_SECRETE;
-
-var TENCENT_ACCESS_TOKEN;
-var TENCENT_ACCESS_SECRETE;
-var TENCENT_APP_KEY;
-var TENCENT_APP_SECRETE;
-
-var OP_HAS_BINDED_TENCENT;
-
 var domain = document.domain;
 var UYUserName;
 var UYUserID;
-var OP_USE_ORIG;
-
-var OP_HAS_BINDED_SINA;
 
 function regenerateCode(UYUserID){
-  var retCode = '<!-- UY BEGIN -->\n<div id=uyan_frame></div>\n<script type=text/javascript id=UYScript async=\'\' src=http://uyan.cc/js/iframe.js?UYUserId='+UYUserID + '></script>';
+  var retCode = '<!-- UY BEGIN -->\n<div id=uyan_frame></div>\n<script type=text/javascript id=UYScript async=\'\' src=http://v1.uyan.cc/js/iframe.js?UYUserId='+UYUserID + '></script>';
   return retCode;
 }
 
@@ -41,7 +26,8 @@ function changeTag($state,$node){
 }
 
 function checkUserName(){
-  var $targetName = $("#inputUserName").val();
+  // var $targetName = $("#inputUserName").val();
+  var $targetName = 'wordpress';
   var length = $targetName.replace(/[^\x00-\xff]/g,"**").length;  
   if(length<=0||length>20){
     var $state = null;
@@ -56,7 +42,7 @@ function checkUserName(){
 function checkPassword(){
   var $targetPS = $("#inputPassword").val();
   var length =$targetPS.length;  
-  if(length<=6||length>32){
+  if(length<6||length>32){
     var $state = null;
   }else{
     var $state = true;
@@ -78,45 +64,32 @@ function setCookie(c_name,value,expiredays){
   document.cookie=c_name+ "=" +escape(value)+ ((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
 }
 
-function UYAutoLogin(email,loginPassword){
-  var rem = 1;
-  if(email!=''&&loginPassword!=''){
-    $.getJSON("http://uyan.cc/index.php/youyan_login/userAutoLoginCrossDomain?callback=?",
-        {
-          email: email,
-      loginPassword:loginPassword,
-      rem:rem,
-      domain: domain
+
+function UYAutoLogin(email,loginPassword,page){
+	var rem = 1;
+	if(email!=''&&loginPassword!=''){
+    $.getJSON(
+		"http://uyan.cc/index.php/youyan_login/userAutoLoginCrossDomain?callback=?",{
+		email: email,
+		loginPassword:loginPassword,
+		rem:rem,
+		domain: domain
         },
+		
         function(data){
           if(data =='noData'){
-          }
-          else{
+          }else{
             UYUserID = data.uid;
             UYUserName = data.uname;
-            SINA_ACCESS_TOKEN = data.SINA_ACCESS_TOKEN;
-            SINA_ACCESS_SECRETE = data.SINA_ACCESS_SECRETE;
-            OP_HAS_BINDED_SINA = (data.SINA_ACCESS_TOKEN != '');
-
-            SINA_APP_KEY = data.SINA_APP_KEY;
-            SINA_APP_SECRETE = data.SINA_APP_SECRETE;
-
-            TENCENT_ACCESS_TOKEN = data.TENCENT_ACCESS_TOKEN;
-            TENCENT_ACCESS_SECRETE = data.TENCENT_ACCESS_SECRETE;
-            OP_HAS_BINDED_TENCENT = (data.TENCENT_ACCESS_TOKEN != '');
-            TENCENT_APP_KEY = data.TENCENT_APP_KEY;
-            TENCENT_APP_SECRETE = data.TENCENT_APP_SECRETE;
-
-
-            OP_USE_ORIG = data.wp_use_orig;
-
+            
             $(".innerContainer").remove();
-            $.post(".", 
-                {
-                  UYUserID: UYUserID,
-              sourceCode: regenerateCode(UYUserID)
-                }, function(data){
-                  $(".contentWrapper").load("../wp-content/plugins/youyan-social-comment-system/uyan_plugin_admin_edit.php");
+            $.post(".", {
+				UYUserID: UYUserID,
+				UYUserName:UYUserName,
+				sourceCode: regenerateCode(UYUserID)
+                },
+				function(data){
+                  $(".contentWrapper").load("../wp-content/plugins/youyan-social-comment-system/uyan_setting.php?page="+page);
                 });
           }
         }
@@ -124,22 +97,22 @@ function UYAutoLogin(email,loginPassword){
   }
 }
 
-function submitLogin(){
-  var email = $("#email").val();
-  var loginPassword = $("#password").val();	
+function submitLogin( url ){
+	var email = $("#email").val();
+	var loginPassword = $("#password").val();	
+	
+	var rem = 1;
+	var state =  email.match(/^[\w][\w+\.\_]*@\w+(\.\w+)*\.[A-z]{2,}$/g);
+	$("#alertLogin").html("");
+	$(".loginBTNPane").html("加载中");
 
-  var rem = 1;
-  var state =  email.match(/^[\w][\w+\.\_]*@\w+(\.\w+)*\.[A-z]{2,}$/g);
-  $("#alertLogin").html("");
-  $(".loginBTNPane").html("加载中");
-
-  if(state&&loginPassword!=''){
-    $.getJSON("http://uyan.cc/index.php/youyan_login/userLoginCrossDomain?callback=?",
-        {
-          email: email,
-      loginPassword:loginPassword,
-      rem:rem,
-      domain: domain
+	if(state&&loginPassword!=''){
+    $.getJSON(
+		"http://uyan.cc/index.php/youyan_login/userLoginCrossDomain?callback=?",{
+		email: email,
+		loginPassword:loginPassword,
+		rem:rem,
+		domain: domain
         },
         function(data){
           if(data =='noData'){
@@ -149,33 +122,18 @@ function submitLogin(){
           else{
             UYUserID = data.uid;
             UYUserName = data.uname;
-            SINA_ACCESS_TOKEN = data.SINA_ACCESS_TOKEN;
-            SINA_ACCESS_SECRETE = data.SINA_ACCESS_SECRETE;
-            OP_HAS_BINDED_SINA = (data.SINA_ACCESS_TOKEN != '');
 
-            SINA_APP_KEY = data.SINA_APP_KEY;
-            SINA_APP_SECRETE = data.SINA_APP_SECRETE;
-
-            TENCENT_ACCESS_TOKEN = data.TENCENT_ACCESS_TOKEN;
-            TENCENT_ACCESS_SECRETE = data.TENCENT_ACCESS_SECRETE;
-            OP_HAS_BINDED_TENCENT = (data.TENCENT_ACCESS_TOKEN != '');
-            TENCENT_APP_KEY = data.TENCENT_APP_KEY;
-            TENCENT_APP_SECRETE = data.TENCENT_APP_SECRETE;
-
-            OP_DOMAIN_NAME = data.domain_name;
-
-            OP_USE_ORIG = data.wp_use_orig;
-
-            $.post(".", 
-                {
-                  UYUserID: UYUserID,
-              sourceCode: regenerateCode(UYUserID)
+            $.post(".", {
+				UYUserID: UYUserID,
+				UYUserName:UYUserName,
+				sourceCode: regenerateCode(UYUserID)
                 });
                   setCookie('UYEmail',email,30);
                   setCookie('UYPassword',hex_md5(loginPassword),30);
                   $(".loginBTNPane").html("登录成功");
                   $(".innerContainer").remove();
-                  $(".contentWrapper").load("../wp-content/plugins/youyan-social-comment-system/uyan_plugin_admin_edit.php");
+                  //$(".contentWrapper").load("../wp-content/plugins/youyan-social-comment-system/uyan_plugin_admin.php");
+				 window.location="http://"+document.domain+''+url;
           }
         });
   }
@@ -192,8 +150,8 @@ function setCookie(c_name,value,expiredays){
   document.cookie=c_name+ "=" +escape(value)+((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
 }
 
-function submitSignup(){
-  if(checkUserName() !==null &&checkEmail() !==null &&checkPassword() !==null){
+function submitSignup( url ){
+	if(checkUserName() !==null &&checkEmail() !==null &&checkPassword() !==null){
     var targetEmail = $("#inputEmail").val();
     var targetPS = $("#inputPassword").val();
     var targetName = $("#inputUserName").val();
@@ -201,9 +159,11 @@ function submitSignup(){
     $("#signupBTNPane").attr("disabled","disabled");
     $("#signupBTNPane").html("提交中");		
 
-    $.getJSON("http://uyan.cc/index.php/youyan_login/signupMasterCrossDomain?callback=?",
-        {
-          targetEmail:targetEmail,targetPS:targetPS,targetName:targetName,targetURL:domain
+	$.getJSON("http://uyan.cc/index.php/youyan_login/signupMasterCrossDomain?callback=?",{
+          targetEmail:targetEmail,
+		  targetPS:targetPS,
+		  targetName:targetName,
+		  targetURL:domain
         },
         function(data){
           if(data == '0'){
@@ -212,42 +172,33 @@ function submitSignup(){
             $("#signupBTNPane").removeAttr("disabled");
             $("#signupBTNPane").html("确定");
             $("#signupBTNPane").removeAttr("onclick");
-            $("#signupBTNPane").attr("onclick",function(){return function(){submitSignup();}});
+            $("#signupBTNPane").attr("onclick",function(){return function(){submitSignup( url );}});
           }else{
             UYUserID = data.uid;
             UYUserName = data.uname;
-            
-            SINA_ACCESS_TOKEN = data.SINA_ACCESS_TOKEN;
-            SINA_ACCESS_SECRETE = data.SINA_ACCESS_SECRETE;
-            OP_HAS_BINDED_SINA = (data.SINA_ACCESS_TOKEN != '');
-            SINA_APP_KEY = data.SINA_APP_KEY;
-            SINA_APP_SECRETE = data.SINA_APP_SECRETE;
-
-            TENCENT_ACCESS_TOKEN = data.TENCENT_ACCESS_TOKEN;
-            TENCENT_ACCESS_SECRETE = data.TENCENT_ACCESS_SECRETE;
-            OP_HAS_BINDED_TENCENT = (data.TENCENT_ACCESS_TOKEN != '');
-            TENCENT_APP_KEY = data.TENCENT_APP_KEY;
-            TENCENT_APP_SECRETE = data.TENCENT_APP_SECRETE;
-
-            OP_USE_ORIG = data.wp_use_orig;
-
-            $("#signupBTNPane").html("成功");
-            $(".innerContainer").remove();
-            $(".contentWrapper").load("../wp-content/plugins/youyan-social-comment-system/uyan_plugin_admin_edit.php");
-            $.post(".", 
-                {
-                  UYUserID: UYUserID,
-              sourceCode: regenerateCode(UYUserID)
-                }, function(data){
-                  $(".contentWrapper").load("../wp-content/plugins/youyan-social-comment-system/uyan_plugin_admin_edit.php");
-                });
             setCookie('UYEmail',targetEmail,30);
             setCookie('UYPassword',hex_md5(targetPS),30);
+
+            UYAutoLogin(targetEmail,targetPS);
+            window.location="http://"+document.domain+''+url;
+            
+            /*$("#signupBTNPane").html("成功");
+            $(".innerContainer").remove();
+            $(".contentWrapper").load("../wp-content/plugins/youyan-social-comment-system/uyan_setting.php");
+            $.post(".", {
+				UYUserID: UYUserID,
+				UYUserName:UYUserName,
+				sourceCode: regenerateCode(UYUserID),
+                }, 
+				function(data){
+                  $(".contentWrapper").load("../wp-content/plugins/youyan-social-comment-system/uyan_setting.php");
+                });
+            setCookie('UYEmail',targetEmail,30);
+            setCookie('UYPassword',hex_md5(targetPS),30);*/
           }
         });
   }
 }
-
 var hexcase = 0; 
 var b64pad  = "";
 var chrsz   = 8; 

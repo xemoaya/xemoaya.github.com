@@ -81,7 +81,7 @@ msgstr "优雅的个人发布平台"
 
 #: footer.php:33
 msgid "Proudly powered by %s."
-msgstr "自豪地采用 %s。"
+msgstr "一点也不自豪地采用 %s。"
 
 #: category.php:16
 msgid "Category Archives: %s"
