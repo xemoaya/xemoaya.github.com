@@ -8,20 +8,44 @@
 
 <link rel="alternate" type="application/rss+xml" title="秋天的青蛙君 &raquo; Feed" href="/blog/feed=rss2/" />
 <link rel="alternate" type="application/rss+xml" title="秋天的青蛙君 &raquo; 评论 Feed" href="/blog/feed=comments-rss2/" />
-<script type="text/javascript">
-			var theblogurl ="/blog/";
-			var flickr_mini_gallery_img_format ="_s";
-		</script><link rel="stylesheet" type="text/css" href="/blog/wp-content/plugins/flickr-mini-gallery/css/jquery.lightbox-0.5.css" media="screen" /><link rel="stylesheet" type="text/css" href="/blog/wp-content/plugins/flickr-mini-gallery/css/flickr-mini-gallery.css" media="screen" /><link rel='stylesheet' id='gsc_style-css'  href='/blog/wp-content/plugins/google-custom-search/css/smoothness/jquery-ui-1.7.3.custom.cssver=3.3.1/' type='text/css' media='all' />
+<link rel='stylesheet' id='gsc_style-css'  href='/blog/wp-content/plugins/google-custom-search/css/smoothness/jquery-ui-1.7.3.custom.cssver=3.3.1/' type='text/css' media='all' />
 <link rel='stylesheet' id='gsc_style_search_bar-css'  href='http://www.google.com/cse/style/look/minimalist.css?ver=3.3.1' type='text/css' media='all' />
 <link rel='stylesheet' id='gsc_style_search_bar_more-css'  href='/blog/wp-content/plugins/google-custom-search/css/gsc.cssver=3.3.1/' type='text/css' media='all' />
+<link rel='stylesheet' id='lightbox-css'  href='/blog/wp-content/plugins/slickr-flickr/lightbox/lightbox.cssver=3.3.1/' type='text/css' media='all' />
+<link rel='stylesheet' id='thickbox-css'  href='/blog/wp-includes/js/thickbox/thickbox.cssver=20111117/' type='text/css' media='all' />
+<link rel='stylesheet' id='galleria-css'  href='/blog/wp-content/plugins/slickr-flickr/galleria/galleria.cssver=3.3.1/' type='text/css' media='all' />
+<link rel='stylesheet' id='slickr-flickr-css'  href='/blog/wp-content/plugins/slickr-flickr/slickr-flickr.cssver=3.3.1/' type='text/css' media='all' />
+<link rel='stylesheet' id='NextGEN-css'  href='/blog/wp-content/plugins/nextgen-gallery/css/nggallery.cssver=1.0.0/' type='text/css' media='screen' />
+<link rel='stylesheet' id='shutter-css'  href='/blog/wp-content/plugins/nextgen-gallery/shutter/shutter-reloaded.cssver=1.3.4/' type='text/css' media='screen' />
 <script type='text/javascript' src='/blog/wp-includes/js/jquery/jquery.js?ver=1.7.1'></script>
 <script type='text/javascript' src='/blog/wp-content/plugins/google-custom-search/js/gsc.js?ver=3.3.1'></script>
 <script type='text/javascript' src='http://www.google.com/jsapi?ver=3.3.1'></script>
-<script type='text/javascript' src='/blog/wp-content/plugins/flickr-mini-gallery/js/jquery.lightbox-0.5.js?ver=0.5'></script>
-<script type='text/javascript' src='/blog/wp-content/plugins/flickr-mini-gallery/js/miniflickr.js?ver=0.1'></script>
+<script type='text/javascript' src='/blog/wp-content/plugins/slickr-flickr/lightbox/jquery.lightbox.js?ver=0.5'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":"http:\/\/192.168.56.102\/wordpress\/wp-includes\/js\/thickbox\/loadingAnimation.gif","closeImage":"http:\/\/192.168.56.102\/wordpress\/wp-includes\/js\/thickbox\/tb-close.png"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/blog/wp-includes/js/thickbox/thickbox.js?ver=3.1-20111117'></script>
+<script type='text/javascript' src='/blog/wp-content/plugins/slickr-flickr/galleria/galleria.min.js?ver=1.39'></script>
+<script type='text/javascript' src='/blog/wp-content/plugins/slickr-flickr/slickr-flickr.js?ver=1.39'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var shutterSettings = {"msgLoading":"L O A D I N G","msgClose":"Click to Close","imageCount":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/blog/wp-content/plugins/nextgen-gallery/shutter/shutter-reloaded.js?ver=1.3.3'></script>
+<script type='text/javascript' src='/blog/wp-content/plugins/nextgen-gallery/js/jquery.cycle.all.min.js?ver=2.9995'></script>
+<script type='text/javascript' src='/blog/wp-content/plugins/nextgen-gallery/js/ngg.slideshow.min.js?ver=1.06'></script>
+<script type="text/javascript">
+jQuery.noConflict(); jQuery(document).ready(function() {
+slickr_flickr_start();
+});
+</script>
 
  
 <meta name="generator" content="WordPress 3.3.1 - Realstatic 0.31" />
+<!-- <meta name="NextGEN" version="1.9.3" /> -->
 </head>
 
 <body class="archive date">
@@ -89,7 +113,7 @@
 		<div id="primary" class="widget-area" role="complementary">
 			<ul class="xoxo">
 
-<li id="gsc-widget-2" class="widget-container google custom search">	<div id="cse-search-form23" style="width: 100%;">Loading</div>
+<li id="gsc-widget-2" class="widget-container google custom search">	<div id="cse-search-form5" style="width: 100%;">Loading</div>
 	<script type="text/javascript">
       google.load('search', '1', {language : 'zh_CN'});
       google.setOnLoadCallback(function() {
@@ -98,7 +122,7 @@
         customSearchControl.enableAds('2496164227');
 				
         var options = new google.search.DrawOptions();
-        options.setSearchFormRoot('cse-search-form23');
+        options.setSearchFormRoot('cse-search-form5');
         options.setAutoComplete(true);
         customSearchControl.draw('gcs-widget', options);
       }, true);
@@ -110,11 +134,11 @@
 		}
     </script>
 <div id="gcs-widget" style="width:100%;"></div></li>		<li id="recent-posts-2" class="widget-container widget_recent_entries">		<h3 class="widget-title">近期文章</h3>		<ul>
+				<li><a href="/blog/p=109/" title="小记黄山之行">小记黄山之行</a></li>
 				<li><a href="/blog/p=87/" title="我花了5年时间，终于和你坐在同一张谈判桌上">我花了5年时间，终于和你坐在同一张谈判桌上</a></li>
 				<li><a href="/blog/p=69/" title="冷静，就是要在冷风中吹一下才能静">冷静，就是要在冷风中吹一下才能静</a></li>
 				<li><a href="/blog/p=67/" title="新博客就这样了">新博客就这样了</a></li>
 				<li><a href="/blog/p=42/" title="所以说马路杀手都是被养成的">所以说马路杀手都是被养成的</a></li>
-				<li><a href="/blog/p=32/" title="测试新博客开通">测试新博客开通</a></li>
 				</ul>
 		</li><li id="categories-2" class="widget-container widget_categories"><h3 class="widget-title">分类目录</h3>		<ul>
 	<li class="cat-item cat-item-3"><a href="/blog/cat=3/" title="吐槽工作和生活">人生和程序都充满bug</a>
@@ -138,129 +162,6 @@
     </script>
 <!-- Baidu Button END --></div></li>			</ul>
 		</div><!-- #primary .widget-area -->
-
-	<style type="text/css">
-
-	.lbx_overlay{
-	display: none;
-	position: fixed;
-	_position: fixed;
-	top: 0%;
-	left: 0%;
-	width: 100%;
-	height: 100%;
-	background-color:#000000;
-	z-index:10000;
-	-moz-opacity: 0.6;
-	opacity:0.6;
-	filter: alpha(opacity=60);
-}
-.lbx_content {
-display: none;
-position: fixed;
-_position: fixed;
-top: 25%;
-left: 25%;
-width: 50%;
-height: 50%;
-padding: 0;
-margin:0;
-border: 10px solid #cccccc;
-background-color: #ffffff;
-z-index:10001;
-overflow: hidden;
-border-radius:5px;
-
-}
-.lbx_iframe{
-
-width:100%;
-height:100%;
-border:0;
-
-
-}
-</style>
-
-<div id="lbx_fade" class="lbx_overlay"  onclick = "javascript:lbx_hide_lightbox()"></div>
-<div id="lbx_light" class="lbx_content">
-<!-- <div width="100%" height="20px" style="text-align:right;padding:0px;margin:0px;"><a href = "javascript:void(0)" onclick = "javascript:lbx_hide_lightbox()">CLOSE</a></div> -->
-<iframe  src="/blog/wp-content/plugins/lightbox-pop/iframe.php" class="lbx_iframe" scrolling="no"></iframe>
-</div>
-
-<script type="text/javascript">
-
-var xyz_lbx_tracking_cookie_name="_xyz_lbx_until";
-var xyz_lbx_pc_cookie_name="_xyz_lbx_pc";
-var xyz_lbx_tracking_cookie_val=xyz_lbx_get_cookie(xyz_lbx_tracking_cookie_name);
-var xyz_lbx_pc_cookie_val=xyz_lbx_get_cookie(xyz_lbx_pc_cookie_name);
-var xyz_lbx_today = new Date();
-
-if(xyz_lbx_pc_cookie_val==null)
-xyz_lbx_pc_cookie_val = 1;
-else
-xyz_lbx_pc_cookie_val = (xyz_lbx_pc_cookie_val % 1 ) +1;
-
-expires_date = new Date( xyz_lbx_today.getTime() + (24 * 60 * 60 * 1000) );
-document.cookie = xyz_lbx_pc_cookie_name + "=" + xyz_lbx_pc_cookie_val + ";expires=" + expires_date.toGMTString() + ";path=/";
-
-
-function xyz_lbx_get_cookie( name )
-{
-var start = document.cookie.indexOf( name + "=" );
-//alert(document.cookie);
-var len = start + name.length + 1;
-if ( ( !start ) && ( name != document.cookie.substring( 0, name.length ) ) )
-{
-return null;
-}
-if ( start == -1 ) return null;
-var end = document.cookie.indexOf( ";", len );
-if ( end == -1 ) end = document.cookie.length;
-return unescape( document.cookie.substring( len, end ) );
-}
-
-
-function lbx_hide_lightbox()
-{
-document.getElementById("lbx_light").style.display="none";
-document.getElementById("lbx_fade").style.display="none";
-}
-
-function lbx_show_lightbox()
-{
-
-//alert(lbx_tracking_cookie_val);
-
-if(xyz_lbx_tracking_cookie_val==1)
-return;
-
-if( "delay_only" == "page_count_only"  || "delay_only" == "both" )
-{
-if(xyz_lbx_pc_cookie_val != 1)
-return;
-}
-
-
-document.getElementById("lbx_light").style.display="block";
-document.getElementById("lbx_fade").style.display="block";
-//expires_date = new Date( xyz_lbx_today.getTime() + (24 * 60 * 60 * 1000) );
-	expires_date = new Date(xyz_lbx_today.getTime() + (1* 60 * 60 * 1000));
-document.cookie = xyz_lbx_tracking_cookie_name + "=1;expires=" + expires_date.toGMTString() + ";path=/";
-
-//alert(1);
-}
-
-if("delay_only" == "page_count_only")
-lbx_show_lightbox();
-else
-setTimeout("lbx_show_lightbox()",2000);
-
-</script>
-
-
-
-
 
 	</div><!-- #main -->
 
